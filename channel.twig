@@ -1,0 +1,47 @@
+{{ void(this.beginBlock('content')) }}
+	{% set blogInfo = _Blog.getBlog() %}
+	{% set networkData = _Network.getNetworkData() %}
+
+	{{ set(this, 'title', blogInfo.title) }}
+
+	{% set hasBlogImage = FALSE %}
+	{% set blogImage = "" %}
+	{% if blogInfo.media['cover']['path'] is not empty %}
+	    {% set blogImage = blogInfo.media['cover']['path'] %}
+	    {% set hasBlogImage = TRUE %}
+	{% endif %}
+
+	{% set blogTitle = blogInfo.title %}
+
+
+<h2>I am blog.twig</h2>
+
+
+    <div class="channel__container">
+        <div class="col-full channel__header">
+            <article class="card--channel {{ channelObject[category|lower] }}">
+                <a href="#" class="card card__no-image" style="background-image: url('{{blogImage}}');" {% if image is defined %}style="background-image: url('{{ image }}'); background-size: cover;"{% endif %}>
+                    <div class="card__overlay">
+                        <div class="card__content_wrap">
+                            <div class="card__content">
+                                <h3 class="card__headline">{{ category }}</h3>
+                                <p class="card__text">Vivamus mattis justo eget est molestie, tincidunt bibendum eros cursus. Nam convallis vulputate neque et rhoncus.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </article>
+        </div>
+        <div class="channel">
+					{% set limit = 20 %}
+					{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+					{% set articles = articlesArr.articles %}
+            {% if articles|length > 0 %}
+                {% include 'elements/_card-layout-blog.twig' with {articles: articles} %}
+            {% endif %}
+        </div>
+    </div>
+		<textarea style="height: 400px; width: 100%;">blogInfo: {{dump(blogInfo)}}</textarea>
+		<textarea style="height: 400px; width: 100%;">articles: {{dump(articles)}}</textarea>
+
+		{{ void(this.endBlock()) }}

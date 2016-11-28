@@ -1,0 +1,21 @@
+<div class="share-popup">
+    <div class="share-popup__title-wrap">
+        <span class="share-popup__title">Share:</span>
+        <img class="share-popup__close" src="{{networkData.templatePath}}/static/images/icons/close-small.svg" alt="" />
+    </div>
+    <input type="text" name="share-link" value="{{ shareLink }}" readonly class="share-popup__share-link share-link">
+    <div class="share-popup__social-wrap">
+        <div class="social-icon_wrap--colored">
+            <a href="https://www.facebook.com/sharer.php?u={{shareLink}}" target="_blank">
+							<i class="fa fa-facebook"></i>
+						</a>
+						<a href="https://plus.google.com/share?url={{shareLink}}" target="_blank">
+							<i class="fa fa-google-plus"></i>
+						</a>
+						<a href="https://twitter.com/intent/tweet?url={{shareLink}}">
+							<i class="fa fa-twitter"></i>
+						</a>
+        </div>
+        <span class="share-popup__copy-text">Copy Link</span>
+    </div>
+</div>
