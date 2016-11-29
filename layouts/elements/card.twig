@@ -7,14 +7,18 @@
 {% block content  %}
 
 	{% set cardLinkClasses %}
-		card swap card--{{ channel|lower }} link
 		{% if cardType == 'social' %}card__{{ network|lower }}{% endif %}
 		{% if thumbnail == '' %} card__no-image{% endif %}
 	{% endset %}
 
 
 	<article class="card--{{ cardType }}  {{ channelObject[channel|lower] }}">
-		<a href="{{link}}" data-slug="{{ slug }}" class="{{cardLinkClasses|replace({"\n":''})}}" data-position="{{position}}" data-article-text="{% if cardType == 'article' %}{{Helper.htmlToText(headline, -1) | raw | escape('html')}}{% else %}{{Helper.htmlToText(text, -1) | raw | escape('html')}}{% endif %}" data-article-image="{{ thumbnail }}">
+		<a href="{{link}}" data-slug="{{ slug }}" class="card swap link {{cardLinkClasses|replace({"\n":''})}}" data-position="{{position}}"
+		   {% if cardType == 'article' %}
+		   data-article-text="{{Helper.htmlToText(headline, -1) | raw | escape('html')}}" data-id="{{article.articleId}}" data-social="0"
+				{% else %}
+		   data-article-text="{{Helper.htmlToText(text, -1) | raw | escape('html')}}" data-id="{{article.socialId}}" data-social="1"
+		   {% endif %}data-article-image="{{ thumbnail }}">
 			<div class="card__overlay">
 				<div class="card__content_wrap">
 					{% include 'layouts/elements/_admin-actions.twig' %}
@@ -79,7 +83,8 @@
 
 				</div>
 			</div>
-			{# <textarea style="width: 100%; height: 50px; position: absolute; bottom: 0; right: 0;">{{dump(article)}}</textarea> #}
+			{# <p>Has media? {{article.hasMedia}}</p>
+			<textarea style="width: 100%; height: 50px; position: absolute; bottom: 0; right: 0;">{{dump(article)}}</textarea> #}
 		</a>
 	</article>
 

@@ -49,9 +49,9 @@
             <div class="header__heading--right">
                 <div class="header__heading-link" id="login">
 									{% if _User.isGuest()%}
-										<a href="/auth/login#login" class="login__link">Login</a> | <a href="/auth/login#sign-up" class="sign-up__link">Sign Up</a>
+										<a href="{{_AppHelper.getLoginUrl()}}#login" class="login__link">Login</a> | <a href="{{_AppHelper.getLoginUrl()}}#sign-up" class="sign-up__link">Sign Up</a>
 									{% else %}
-											<a href="/auth/logout" class="logout__link">Logout</a>
+											<a href="{{_AppHelper.getLogoffUrl()}}" class="logout__link">Logout</a>
 									{% endif %}
 								</div>
 								{% if not _User.isGuest()%}
@@ -116,27 +116,30 @@
         </div>
     </div>
     <div class="side-navigation">
-        <form method="get">
+			<form action="{{blog.url}}/search" method="get">
+					<input type="text" class="side-navigation__search" placeholder="Search" name="s" value="{{_AppHelper.getRequest('s')}}">
+					<button class="header__search-btn">
+							{{ this.render('svg/search-magnifying-glass.svg') | raw }}
+					</button>
+			</form>
+        {# <form method="get">
             <input type="text" class="side-navigation__search" placeholder="Search" name="s">
-        </form>
+        </form> #}
         <ul class="side-navigation__list">
-            {% set entries = craft.categories.group('channels') %}
-            {% for i in 0..4 %}
-                {% set entry = entries[i] %}
-                <li class="side-navigation__item">
-                    <a href="{{ entry.url }}" class="side-navigation__link {{ channelObject[entry.title|lower] }}">
-                        {{ entry.title }}
+						{% for blog in blogs %}
+								<li class="side-navigation__item">
+                    <a href="{{ blog.link }}" class="side-navigation__link {{ channelObject[blog.blogTitle|lower] }}">
+                        {{ blog.blogTitle }}
                     </a>
                 </li>
-            {% endfor %}
-            {% set singles = craft.entries('singles') %}
-            {% for single in singles if single.displayInNav %}
-                <li class="side-navigation__item">
-                    <a href="{{ single.url }}" class="side-navigation__link">
-                        {{ single.title }}
+						{% endfor %}
+						{% for section in sections %}
+								<li class="side-navigation__item">
+                    <a href="{{ section.url }}" class="side-navigation__link">
+                        {{ section.title }}
                     </a>
                 </li>
-            {% endfor %}
+						{% endfor %}
         </ul>
     </div>
 </header>
