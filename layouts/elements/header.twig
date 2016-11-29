@@ -8,7 +8,6 @@
         {% set profileImage = _Media.getMediaUrl(user.profileMedia, 150, 150, {radius: 'max', gravity: 'face', 'crop': 'thumb'})%}
     {% endif %}
 {% endif %}
-{# {{dump(user)}} #}
 <header class="header">
     <div class="header__heading header__container">
         <div class="header__heading-highlight"></div>
@@ -48,20 +47,25 @@
                 {#<!--{% endif %}-->#}
             </div>
             <div class="header__heading--right">
-                <div class="header__heading-link" id="login"><a href="/auth/login#login" class="login__link">Login</a> | <a href="/auth/login#sign-up" class="sign-up__link">Sign Up</a></div>
+                <div class="header__heading-link" id="login">
+									{% if _User.isGuest()%}
+										<a href="/auth/login#login" class="login__link">Login</a> | <a href="/auth/login#sign-up" class="sign-up__link">Sign Up</a>
+									{% else %}
+											<a href="/auth/logout" class="logout__link">Logout</a>
+									{% endif %}
+								</div>
 								{% if not _User.isGuest()%}
                 <div class="header__heading-icons">
-                    <a href="javascript:void(0)"
-                       class="header__heading-link header__heading-link--profile"
-                       id="profile">
+                    <a href="javascript:void(0)" class="header__heading-link header__heading-link--profile" id="profile">
 												{{ this.render('svg/cog.svg') | raw }}
                     </a>
 
                     <a href="javascript:void(0)" class="header__heading-link header__heading-link--responsive">
 												{{ this.render('svg/menu.svg') | raw }}
                     </a>
-									{% endif %}
+
                 </div>
+								{% endif %}
 
                 <div class="header__heading--visible_desktop">
                     <div class="header__search">
@@ -82,20 +86,17 @@
                 <ul class="header__navigation-list">
 									{% include 'header-nav-items.twig' %}
                 </ul>
-								{#
-
-								Hiding this for now. Waiting on Rohit.
 
                 <ul class="header__navigation-list header__navigation-list--right">
-                    <li class="header__navigation-item dropdown">
+                    	<li class="header__navigation-item dropdown">
                         <a href="#" class="header__navigation-link dropdown-toggle" type="button" id="dropdown" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
                             Authors {{ this.render('svg/arrow-down.svg') | raw }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown">
+														{% set blogs = blogData.blogHeaderMenu %}
                             {% for blog in blogs %}
-                                <li class="header__navigation-item--{{ blog.slug|lower }} {{ blogObject[blog.slug|lower] }}"><a href="# {{ blog.url }}" class="">{{ blog.title }}</a></li>
+                                <li class="header__navigation-item--"><a href="{{ blog.link }}" class="">{{ blog.blogTitle }}</a></li>
                             {% endfor %}
-                            <li class="header__navigation-item"><a href="/blog/dev" class="">Dev blog</a></li>
                         </ul>
                     </li>
                     <li class="header__navigation-item dropdown">
@@ -103,15 +104,14 @@
                             Topics {{ this.render('svg/arrow-down.svg') | raw }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown">
-                            {% set channels = craft.categories.group('channels') %}
-
-                            {% for channel in channels %}
-                                <li class="header__navigation-item--{{ channel.title|lower }} {{ channelObject[channel.title|lower] }}"><a href="{{ channel.url }}" class="">{{ channel.title }}</a></li>
-                            {% endfor %}
-                            <li class="header__navigation-item"><a href="/blog/dev" class="">Dev blog</a></li>
+													{# Using sections as topics for this site #}
+													{% set sections = _Network.getNetworkSections({'networkId': networkData.id}) %}
+                          {% for section in sections %}
+                              <li class="header__navigation-item--{{ section.title|lower }}"><a href="{{ section.url }}" class="">{{ section.title }}</a></li>
+                          {% endfor %}
                         </ul>
                     </li>
-                </ul> #}
+                </ul>
             </div>
         </div>
     </div>

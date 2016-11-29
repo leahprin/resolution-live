@@ -25,7 +25,14 @@
 					<div class="profile__author_wrap">
 						<div>
 							<span class="article__author">By {{ author }}</span>
-							<a href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}" class="button button-sm button-blue" style="background: red;">View profile</a>
+							{% set blogData = _Blog.getBlog() %}
+							{% set blogs = blogData.blogHeaderMenu %}
+							{% for blog in blogs %}
+								{% if blog.blogTitle == author %}
+									{# <li class="header__navigation-item--"><a href="{{ blog.link }}" class="">{{ blog.blogTitle }}</a></li> #}
+									<a href="{{ blog.link }}" class="button button-sm button-blue">View Articles</a>
+								{% endif %}
+							{% endfor %}
 						</div>
 						<div class="profile__author-bio">{{ authorBio }}</div>
 					</div>
@@ -54,18 +61,20 @@
 
 			</div>
 			<div class="article__container--full-width">
-				<div class="article__banner-container">
-					<div class="article__banner_left">
-						<h3 class="article__banner_heading">Get an unfair advantage</h3>
-						<div class="article__banner_sub-heading">The best from The Resolution, delivered to your inbox every month.</div>
+				{% if article.media is not empty %}
+					<div class="article__banner-container">
+						<div class="article__banner_left">
+							<h3 class="article__banner_heading">Get an unfair advantage</h3>
+							<div class="article__banner_sub-heading">The best from The Resolution, delivered to your inbox every month.</div>
+						</div>
+						<div class="article__banner_right">
+							<form class="newsletter-form" action="">
+								<input type="text" class="newsletter-form-text" placeholder="Email" name="s" value="">
+								<button class="newsletter-form__form-btn">Sign Up <i class="fa fa-envelope"></i></button>
+							</form>
+						</div>
 					</div>
-					<div class="article__banner_right">
-						<form class="newsletter-form" action="">
-							<input type="text" class="newsletter-form-text" placeholder="Email" name="s" value="">
-							<button class="newsletter-form__form-btn">Sign Up <i class="fa fa-envelope"></i></button>
-						</form>
-					</div>
-				</div>
+				{% endif %}
 
 				<div class="slides">
 					{% for image in article.media %}
@@ -123,6 +132,6 @@
 			{% include 'layouts/elements/_card-layout-thirds.twig' with {articles: articles} %}
 		{% endif %}
 	</div>
-	{# {{dump(article)}} #}
+	{{dump(article)}}
 {{ void(this.endBlock()) }}
 {% endblock %}

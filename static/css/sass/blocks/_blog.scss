@@ -19,6 +19,15 @@
       flex-direction: column;
       position: relative;
       height: 100%;
+			&:after {
+				display: block;
+				position: absolute;
+				left: 0;
+				right: 0;
+				content: '';
+				height: 100%;
+				width: 100%;
+			}
       @include tablet-lg {
         padding: 30px;
         flex-direction: row;
