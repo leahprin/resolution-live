@@ -5,7 +5,7 @@
 var cardTemplate =
 	'<div class="{{containerClass}}">' +
 			'<article class="card--{{ cardType }}">' +
-					'<a href="{{link}}" data-slug="{{ slug }}" class="card swap link {{#unless thumbnail}} card__no-image {{/unless}}{{#if isSocial}}card__{{network}}{{/if}}" data-article-image="{{ thumbnail }}" data-position="{{position}}" {{#if isArticle}} data-article-text="{{headline}}" data-id="{{articleId}}" data-social="0"{{else}} data-article-text="{{text}}" data-id="{{socialId}}" data-social="1" {{/if}}>' +
+					'<a href="{{link}}" data-slug="{{ slug }}" class="card swap link {{#unless thumbnail}} card__no-image {{/unless}}{{#if isSocial}}card__{{network}}{{/if}}" data-article-image="{{ thumbnail }}" data-position="{{position}}" {{#if isArticle}} data-article-text="{{headline}}" data-id="{{articleId}}" data-guid="{{guid}}" data-social="0"{{else}} data-article-text="{{text}}" data-id="{{socialId}}" data-guid="{{social.guid}}" data-social="1" {{/if}}>' +
 							'<div class="card__overlay">' +
 									'<div class="card__content_wrap">' +
 											'{{#if isArticle}}' +
@@ -104,3 +104,64 @@ var cardTemplate =
 					'</a>' +
 			'</article>' +
 	'</div>';
+
+var modalTemplate =
+	'<button type="button" class="close close__lg-modal" data-dismiss="modal" aria-label="Close">' +
+			'<span aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Close</title><g stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M17.803 2L2 17.803M2.08 2.08l15.803 15.803"/></g></svg><div class="close__text">esc</div></span>' +
+	'</button>' +
+	'<div class="social-modal__content {{#unless hasImageVideo }}no_image{{/unless}}">' +
+			'<button type="button" class="close close__sm-modal" data-dismiss="modal" aria-label="Close">' +
+					'<span aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Close</title><g stroke="#FFF" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M17.803 2L2 17.803M2.08 2.08l15.803 15.803"/></g></svg></span>' +
+			'</button>' +
+			'<div class="social-modal__channel social-modal__channel--technology ">Need something here</div>' +
+			'<div class="social-modal__overflow">' +
+					'<div class="social-modal__text">“<br>{{ text }}</div>' +
+			'</div>' +
+			'<div class="article__profile">' +
+					'<span class="profile__user_image" style="background-image: url({{ authorImage }}); height: 56px; width: 56px; background-size: cover; display: inline-block; border-radius: 50%;"></span>' +
+					'<div class="profile__author_wrap">' +
+							'<span class="article__author">By @{{ author }}</span>' +
+							'<div class="profile__button-wrap">' +
+									'<a href="/user-posts/dev" class="button button-sm button__follow">Follow</a>' +
+									'<a href="javascript:void(0)" class="button button-sm button__share">Share' +
+											'<div class="share-popup">' +
+													'<div class="share-popup__title-wrap">' +
+															'<span class="share-popup__title">Share:</span>' +
+															'<img class="share-popup__close" src="{{networkData.templatePath}}/static/images/icons/close-small.svg" alt="" />' +
+													'</div>' +
+													'<input type="text" name="share-link" value="{{ shareLink }}" readonly class="share-popup__share-link share-link">' +
+													'<div class="share-popup__social-wrap">' +
+															'<div class="social-icon_wrap--colored">' +
+																	'<a href="https://www.facebook.com/sharer.php?u={{shareLink}}" target="_blank">' +
+																			'<i class="fa fa-facebook"></i>' +
+																	'</a>' +
+																	'<a href="https://plus.google.com/share?url={{shareLink}}" target="_blank">' +
+																			'<i class="fa fa-google-plus"></i>' +
+																	'</a>' +
+																	'<a href="https://twitter.com/intent/tweet?url={{shareLink}}">' +
+																			'<i class="fa fa-twitter"></i>' +
+																	'</a>' +
+															'</div>' +
+															'<span class="share-popup__copy-text">Copy Link</span>' +
+													'</div>' +
+											'</div>' +
+									'</a>' +
+							'</div>' +
+					'</div>' +
+			'</div>' +
+	'</div>' +
+	'{{#if hasImageVideo }}' +
+			'<div class="social-modal__image_container">' +
+					'<div class="social-modal__image_wrap">' +
+							'{{#if hasVideo }}' +
+									'<div class="social-modal__video-wrap">' +
+											'<div>{{{ video }}}</div>' +
+									'</div>' +
+							'{{else if hasImage}}' +
+									'<div class="social-modal__image" style="background-image: url({{ image }});">' +
+											'<img class="social-modal__image_image" src="{{ image }}" alt="" />' +
+									'</div>' +
+							'{{/if}}' +
+					'</div>' +
+			'</div>' +
+	'{{/if}}';
