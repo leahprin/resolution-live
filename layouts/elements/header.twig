@@ -47,21 +47,21 @@
                 {#<!--{% endif %}-->#}
             </div>
             <div class="header__heading--right">
-                <div class="header__heading-link" id="login">
-                                    <a href="{{_AppHelper.getLogoffUrl()}}" class="logout__link">Logout</a>
-								</div>
-								{% if not _User.isGuest()%}
-                <div class="header__heading-icons">
-                    <a href="javascript:void(0)" class="header__heading-link header__heading-link--profile" id="profile">
-												{{ this.render('svg/cog.svg') | raw }}
-                    </a>
-
-                    <a href="javascript:void(0)" class="header__heading-link header__heading-link--responsive">
-												{{ this.render('svg/menu.svg') | raw }}
-                    </a>
-
+                 <div class="header__heading-link" id="login">
+                    <a href="{{_AppHelper.getLogoffUrl()}}" class="logout__link">Logout</a>
                 </div>
-								{% endif %}
+                {% if not _User.isGuest()%}
+                    <div class="header__heading-icons">
+                        <a href="javascript:void(0)" class="header__heading-link header__heading-link--profile" id="profile">
+                                                    {{ this.render('svg/cog.svg') | raw }}
+                        </a>
+
+                        <a href="javascript:void(0)" class="header__heading-link header__heading-link--responsive">
+                                                    {{ this.render('svg/menu.svg') | raw }}
+                        </a>
+
+                    </div>
+                {% endif %}
 
                 <div class="header__heading--visible_desktop">
                     <div class="header__search">
