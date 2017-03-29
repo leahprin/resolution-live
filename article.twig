@@ -124,7 +124,12 @@
 		</div>
 
 	</div>
-	{% include 'layouts/elements/deloit-banner.twig' %}
+    {% set random = random(1) %}
+    {% if random == 0 %}
+        {{this.render("layouts/elements/_cta.twig",{keyword: "cta_2"}) | raw}}
+    {% else %}
+        {{this.render("layouts/elements/_cta.twig",{keyword: "cta_3"}) | raw}}
+    {% endif %}
 
 	{% set articles = _Article.getPopularArticles({ limit: 5, excludeArticleId : articleId }) %}
 	<div class="card-container">

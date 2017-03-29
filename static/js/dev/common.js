@@ -20,22 +20,12 @@
       }
     });
 
-    window.onload = function(){
-      var hash = (window.location.hash).replace('#', '');
-      if (hash === 'sign-up') {
-        $('a[href="#signUp"]').tab('show');
-      } else if (hash === 'login') {
-        $('a[href="#login"]').tab('show');
+    $('.forceLoginModal').loginModal({
+      onLoad: function () {
+        $("#loginForm").validateLoginForm();
+        $("#signupForm").validateSignupForm();
       }
-    }
-
-    $('.sign-up__link').on('click', function () {
-      $('a[href="#signUp"]').tab('show');
-    })
-
-    $('.login__link').on('click', function () {
-      $('a[href="#signIn"]').tab('show');
-    })
+    });
 
     var overiFrame = -1;
     $('iframe').hover( function() {
