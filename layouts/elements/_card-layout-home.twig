@@ -100,4 +100,9 @@
 		{% if articles|length >= limit %}
 			{% include 'layouts/elements/load-more.twig' with {existingNonPinnedCount: articlesArr.existingNonPinnedCount } %}
     {% endif %}
-    {% include 'layouts/elements/deloit-banner.twig' | raw %}
+    {% set random = random(1) %}
+    {% if random == 0 %}
+        {{this.render("layouts/elements/_cta.twig",{keyword: "cta_2"}) | raw}}
+    {% else %}
+        {{this.render("layouts/elements/_cta.twig",{keyword: "cta_3"}) | raw}}
+    {% endif %}
