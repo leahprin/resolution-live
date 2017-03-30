@@ -101,8 +101,8 @@
   &__right {
     @include desktop-sm {
       display: flex;
-      align-items: center;
-      width: 20%;
+      align-items: flex-start;
+      width: 15%;
       justify-content: center;
       flex-direction: column;
       .footer__sponsor-title {
@@ -111,7 +111,12 @@
       }
       .footer__sponsor-wrap {
         img:first-child {
-          margin-right: 35px;
+          margin-bottom: 20px;
+          align-self: flex-start;
+        }
+        img:nth-of-type(2) {
+          align-self: flex-start;
+          height: 38px;
         }
       }
     }
