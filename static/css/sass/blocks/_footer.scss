@@ -122,6 +122,11 @@
     }
   }
 
+  &__sponsor-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__additional-links {
     @include transition(color 0.5s ease);
     @include text-sm($font-weight: 600, $color: #fff, $font-multiplier: 0.78, $line-height: 1.73);
