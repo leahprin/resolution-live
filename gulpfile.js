@@ -17,7 +17,8 @@ var gulp = require('gulp'),
   lr = require('tiny-lr'),
   server = lr(),
   browserSync = require('browser-sync').create(),
-  bust = require('gulp-buster');
+  bust = require('gulp-css-cache-bust');
+
 
 // BROWSER SYNC
 livereload({ start: true });
@@ -27,7 +28,6 @@ browserSync.init({
 
 gulp.task('styles', function(){
   gulp.src('static/css/sass/index.scss')
-    .pipe(sourcemaps.init())
     .pipe(
       sass({
         outputStyle: 'compressed',
@@ -43,12 +43,9 @@ gulp.task('styles', function(){
         }
       })
     )
-
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(sourcemaps.write())
-    .pipe( gulp.dest('static/css') )
+    .pipe(gulp.dest('static/css') )
     .pipe(bust())
-    .pipe(gulp.dest('.'))
     .pipe(browserSync.stream());
 });
 

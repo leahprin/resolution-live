@@ -42,3 +42,6 @@ node_modules
 .idea
 
 /deploy.php
+composer.phar
+/vendor/
+

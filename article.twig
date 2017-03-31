@@ -9,8 +9,8 @@
  	{# Need to move this to _helpers/cog-variables.twig #}
 	{% set author = article.createdBy['displayName'] %}
 	{% set authorLink = _AppHelper.getUserProfileUrl(article.createdBy['username']) %}
-  {% set authorBio = _User.getUser().bio | striptags[:100] ~ '...' %}
-  {% set authorImage = _Media.getMediaUrl(article.createdBy['media'],104,104,{crop:'thumb', gravity:'face', radius:'max'} ) %}
+	{% set authorBio = _User.getUser().bio | striptags[:100] ~ '...' %}
+	{% set authorImage = _Media.getMediaUrl(article.createdBy['media'],104,104,{crop:'thumb', gravity:'face', radius:'max'} ) %}
 
 	{% set headline = article.title %}
 	{% set text = article.excerpt %}
@@ -115,8 +115,8 @@
 
 				{{article.content | raw}}
 
-				<h2 class="comments-header" id="comments"><span class="disqus-comment-count" data-disqus-url="{{link}}"></span>Comments</h2>
-				{% include "layouts/elements/disqus.twig" %}
+				{#<h2 class="comments-header" id="comments"><span class="disqus-comment-count" data-disqus-url="{{link}}"></span>Comments</h2>#}
+				{#{% include "layouts/elements/disqus.twig" %}#}
 				{# {{ this.render('layouts/elements/disqus.twig') | raw }} #}
 			</div>
 
@@ -134,7 +134,7 @@
 	{% set articles = _Article.getPopularArticles({ limit: 5, excludeArticleId : articleId }) %}
 	<div class="card-container">
 		{% if articles|length > 0 %}
-			{#{% include 'layouts/elements/_card-layout-thirds.twig' with {articles: articles} %}#}
+			{% include 'layouts/elements/_card-layout-thirds.twig' with {articles: articles} %}
 		{% endif %}
 	</div>
 	{# {{dump(article)}} #}
