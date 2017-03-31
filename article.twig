@@ -42,7 +42,7 @@
 					<button href="javascript:void(0)" class="button button__share header_actions header_actions__share article__header-item">Share Article
 						{# {{ this.render('layouts/elements/share-popup.twig', {'shareMe' : data1, 'data2' : data2}) | raw }} #}
 
-						{% include 'layouts/elements/share-popup.twig' with {shareLink: article.url} %}
+						{#{% include 'layouts/elements/share-popup.twig' with {shareLink: article.url} %}#}
 
 
 						{# {% include ('layouts/elements/share-popup.twig', {'shareMe' : article.url}) | raw %} #}
@@ -116,7 +116,7 @@
 				{{article.content | raw}}
 
 				<h2 class="comments-header" id="comments"><span class="disqus-comment-count" data-disqus-url="{{link}}"></span>Comments</h2>
-				{% include "layouts/elements/disqus.twig" | raw %}
+				{#{% include "layouts/elements/disqus.twig" | raw %}#}
 				{# {{ this.render('layouts/elements/disqus.twig') | raw }} #}
 			</div>
 
@@ -124,12 +124,12 @@
 		</div>
 
 	</div>
-	{% include 'layouts/elements/deloit-banner.twig' %}
+	{#{% include 'layouts/elements/deloit-banner.twig' %}#}
 
 	{% set articles = _Article.getPopularArticles({ limit: 5, excludeArticleId : articleId }) %}
 	<div class="card-container">
 		{% if articles|length > 0 %}
-			{% include 'layouts/elements/_card-layout-thirds.twig' with {articles: articles} %}
+			{#{% include 'layouts/elements/_card-layout-thirds.twig' with {articles: articles} %}#}
 		{% endif %}
 	</div>
 	{# {{dump(article)}} #}
