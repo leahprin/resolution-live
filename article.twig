@@ -134,7 +134,7 @@
 	{% set articles = _Article.getPopularArticles({ limit: 5, excludeArticleId : articleId }) %}
 	<div class="card-container">
 		{% if articles|length > 0 %}
-        {{ this.render('layouts/elements/_card-layout-thirds.twig'), {articles: articles} }}
+        {{ this.render('layouts/elements/_card-layout-thirds.twig'), {articles: articles} | raw }}
 		{% endif %}
 	</div>
 	{# {{dump(article)}} #}
