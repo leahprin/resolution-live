@@ -17,11 +17,11 @@
             }
         ")}}
         <a class="deloitte-banner call-to-action-wrapper cta_block_{{cta.id}}" href="{{cta.button['url']}}" {% if ctaBackgroundImage is not empty or cta.backgroundColor is not empty %} style="display:block;{{ (ctaBackgroundImage is not empty) ? 'background-image: url('~ctaBackgroundImage~');' : ''}}{{ (cta.backgroundColor is not empty) ? 'background-color: '~cta.backgroundColor~';' : ''}}"{% endif %}>
-            <div class="deloitte-banner__overlay" {% if cta.id == 6 %}style="background-image: none!important;background-color: rgba(0, 118, 118, 0.5)!important;"{% endif %}>
+            <div class="deloitte-banner__overlay" {% if cta.id != 6 %}style="background-image: none!important;background-color: rgba(0, 118, 118, 0.5)!important;"{% endif %}>
                 <div class="deloitte-banner__container">
                     <div class="deloitte-banner__left">
                         <div class="deloitte-banner__small-text">The Resolution is proudly sponsored by:</div>
-                        {% if cta.id == 6 %}
+                        {% if cta.id != 6 %}
                             <img src="{{_Network.getNetworkData().templatePath}}/static/images/pp-logo.svg" alt="">
                         {% else %}
                             <img src="{{_Network.getNetworkData().templatePath}}/static/images/deloit-logo.svg" alt="">
