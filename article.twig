@@ -115,9 +115,11 @@
 
 				{{article.content | raw}}
 
-				{#<h2 class="comments-header" id="comments"><span class="disqus-comment-count" data-disqus-url="{{link}}"></span>Comments</h2>#}
-				{#{% include "layouts/elements/disqus.twig" %}#}
-				{# {{ this.render('layouts/elements/disqus.twig') | raw }} #}
+				<h2 class="comments-header" id="comments"><span class="disqus-comment-count" data-disqus-url="{{link}}"></span>Comments</h2>
+                {% set network = _Network.getNetworkData() %}
+                {% if network.thirdPartyIntegrations['disqus'] | length > 0 and network.thirdPartyIntegrations['disqus']['shortName'] != '' %}
+                    {{this.render("layouts/elements/disqus.twig", {disqus: network.thirdPartyIntegrations['disqus'], userId: article.createdBy['id'], url:article.url, articleId: article.id}) | raw}}
+                {% endif %}
 			</div>
 
 
