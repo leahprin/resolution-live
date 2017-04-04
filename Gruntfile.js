@@ -19,6 +19,14 @@ module.exports = function(grunt) {
             'static/plugins/waypoint/lib/jquery.waypoints.min.js',
             'static/plugins/handlebars-v4.0.5.js',
             'static/plugins/jquery.lazyload.min.js',
+            'static/development/js/handlebars-templates.js',
+            'static/development/js/article.js',
+            'static/development/js/home.js',
+            'static/development/js/search.js',
+            'static/development/js/user-articles.js',
+            'static/development/js/auth.js',
+            'static/development/js/common.js',
+            'static/development/js/user-profile.js',
             '../../static/sdk/js/cloudinary/jquery.cloudinary.js',
             '../../static/sdk/js/common.js',
             '../../static/sdk/js/blog.js',
@@ -34,15 +42,7 @@ module.exports = function(grunt) {
             '../../static/sdk/js/yii/yii.js',
             '../../static/sdk/js/yii/yii.captcha.js',
             '../../static/sdk/js/uploadfile.js',
-            '../../static/sdk/js/media-player/mediaelement-and-player.min.js',
-            'static/development/js/handlebars-templates.js',
-            'static/development/js/article.js',
-            'static/development/js/home.js',
-            'static/development/js/search.js',
-            'static/development/js/user-articles.js',
-            'static/development/js/auth.js',
-            'static/development/js/common.js',
-            'static/development/js/user-profile.js'
+            '../../static/sdk/js/media-player/mediaelement-and-player.min.js'
           ]
         }
       }
