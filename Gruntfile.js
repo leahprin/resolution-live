@@ -4,7 +4,8 @@ module.exports = function(grunt) {
     //Minify JS
     uglify: {
       options: {
-        mangle: false
+        mangle: false,
+        beautify: true
       },
       theme: {
         files: {
