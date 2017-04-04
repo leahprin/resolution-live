@@ -1464,16 +1464,6 @@ $(document).ready(function() {
 			return $(this.menu).css('visibility', 'hidden');
 		}
 	});
-  $(".slides").slick({
-    arrows: false,
-    autoplay: false,
-    autoplaySpeed: 3000,
-    dots: true,
-    draggable: false,
-		pauseOnHover: false,
-    slidesToShow: 1,
-    speed: 500
-  });
   $("#profile").on("click", function(e) {
     e.preventDefault();
     return $("#header__menu").simplemodal({
