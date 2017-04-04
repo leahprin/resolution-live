@@ -19,6 +19,7 @@ module.exports = function(grunt) {
             'static/plugins/waypoint/lib/jquery.waypoints.min.js',
             'static/plugins/handlebars-v4.0.5.js',
             'static/plugins/jquery.lazyload.min.js',
+            'static/plugins/jquery.ajaxchimp.js',
             'static/sdk/js/cloudinary/jquery.cloudinary.js',
             'static/sdk/js/common.js',
             'static/sdk/js/blog.js',
