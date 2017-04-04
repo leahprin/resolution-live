@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         },
         files: {
           src: [
-            'layouts/partials/_javascript.twig',
+            'layouts/elements/javascript.twig',
             'layouts/main.twig'
           ]
         }
