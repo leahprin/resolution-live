@@ -45,12 +45,12 @@
                                     <button class="button button__share">Share
 																		{% include 'layouts/elements/share-popup.twig' with {shareLink: blogInfo.url} %}
                                     </button>
-                                    <span class="button button__connect">
-                                        {% set twitterUrl = _AppHelper.getSocialTwitterUrl(1) %}
-                                        {% set linkedInUrl = _AppHelper.getSocialLinkedinUrl(1) %}
-                                        {% if linkedInUrl %}{{ linkedInUrl }}{% endif %}
-                                        Connect <a href="{% if linkedInUrl %}{{ linkedInUrl }}{% endif %}" class="button__linkedin"></a><a href="{{ _AppHelper.getSocialLinkedinUrl(1) }}" class="button__twitter"></a>
-                                    </span>
+                                    {#<span class="button button__connect">#}
+                                        {#{% set twitterUrl = _AppHelper.getSocialTwitterUrl(1) %}#}
+                                        {#{% set linkedInUrl = _AppHelper.getSocialLinkedinUrl(1) %}#}
+                                        {#{% if linkedInUrl %}{{ linkedInUrl }}{% endif %}#}
+                                        {#Connect <a href="{% if linkedInUrl %}{{ linkedInUrl }}{% endif %}" class="button__linkedin"></a><a href="{{ _AppHelper.getSocialLinkedinUrl(1) }}" class="button__twitter"></a>#}
+                                    {#</span>#}
                                 </div>
                                                             <div class="blog__user-header__about">
                                                                 {{blogAuthorBio}}
