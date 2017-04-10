@@ -12,7 +12,7 @@
 	{{ Html.csrfMetaTags | raw }}
 	<link rel="home" href="{{ siteUrl }}" />
 
-	<link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/output.min.css?rel=1491367002751" type="text/css" media="all">
+	<link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/output.min.css?rel=1491798842403" type="text/css" media="all">
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,900|Playfair+Display:700" rel="stylesheet">
 	<link rel="shortcut icon" href="{{networkData.templatePath}}/static/images/favicon.png" />
 	<link rel="icon" href="{{networkData.templatePath}}/static/images/favicon.svg" sizes="any" type="image/svg+xml" />
@@ -23,6 +23,17 @@
 		}
 		h1, h2, h3, h4, h5 {
 			font-family: "Playfair Display", serif !important;
+		}
+		@font-face {
+			font-family: 'FontAwesome';
+			src: url('{{networkData.templatePath}}/static/fonts/fontawesome-webfont.eot');
+			src: url('{{networkData.templatePath}}/static/fonts/fontawesome-webfont.eot') format('embedded-opentype'),
+			url('{{networkData.templatePath}}/static/fonts/fontawesome-webfont.woff2') format('woff2'),
+			url('{{networkData.templatePath}}/static/fonts/fontawesome-webfont.woff') format('woff'),
+			url('{{networkData.templatePath}}/static/fonts/fontawesome-webfont.ttf') format('truetype'),
+			url('{{networkData.templatePath}}/static/fonts/fontawesome-webfont.svg#fontawesomeregular') format('svg');
+			font-weight: normal;
+			font-style: normal;
 		}
 	</style>
     {{ this.head() }}
