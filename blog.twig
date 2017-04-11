@@ -18,7 +18,7 @@
 		{% endif %}
 
 		{% set limit = 20 %}
-		{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+		{% set articlesArr = _Blog.getBlogFeed({'guid': blogInfo.guid, 'limit': limit, 'offset': 0}) %}
 		{% set articles = articlesArr.articles %}
 
 		{% set blogTitle = blogInfo.title %}
