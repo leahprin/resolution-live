@@ -125,20 +125,20 @@
             <input type="text" class="side-navigation__search" placeholder="Search" name="s">
         </form> #}
         <ul class="side-navigation__list">
-            {#{% set networkData = _Network.getNetworkData() %}#}
-            {#{% set blogData = _Blog.getBlog() %}#}
-            {#{% set menuItems = blogData.blogHeaderMenu %}#}
-            {#{% for blog in menuItems %}#}
-                {#<li class="side-navigation__item">#}
-                    {#<a href="{{ blog.link | raw }}" class="side-navigation__link">#}
-                        {#{% if menuItem.pageTitle == "" %}#}
-                            {#{{menuItem.blogTitle | split(' ')[0]}} {{menuItem.blogTitle | split(' ')[1]}}#}
-                        {#{% else %}#}
-                            {#{{menuItem.pageTitle}}#}
-                        {#{% endif %}#}
-                    {#</a>#}
-                {#</li>#}
-            {#{% endfor %}#}
+            {% set networkData = _Network.getNetworkData() %}
+            {% set blogData = _Blog.getBlog() %}
+            {% set menuItems = blogData.blogHeaderMenu %}
+            {% for blog in menuItems %}
+                <li class="side-navigation__item">
+                    <a href="{{ blog.link | raw }}" class="side-navigation__link">
+                        {% if menuItem.pageTitle == "" %}
+                            {{menuItem.blogTitle | split(' ')[0]}} {{menuItem.blogTitle | split(' ')[1]}}
+                        {% else %}
+                            {{menuItem.pageTitle}}
+                        {% endif %}
+                    </a>
+                </li>
+            {% endfor %}
         </ul>
     </div>
 </header>
