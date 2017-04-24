@@ -326,6 +326,9 @@
       }
     }
     &__big-image {
+      @media( max-width: 480px ) {
+        display: none;
+      }
       display: block;
     }
     &__text {
