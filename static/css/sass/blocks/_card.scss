@@ -88,7 +88,7 @@
     max-width: 650px;
     margin-bottom: 18px;
     @media (max-width: 480px) {
-      @include text-md($color: $heading-text, $line-height: 1.05, $letter-spacing: -0.014em, $font-multiplier: 1.8, !important);
+      @include text-md($color: $heading-text, $line-height: 1.05, $letter-spacing: -0.014em, $font-multiplier: 1.8, $content: !important);
     }
     @include text-md($color: $heading-text, $line-height: 1.1, $letter-spacing: -0.014em, $font-multiplier: 2.12);
     padding-bottom: 2px;
@@ -99,7 +99,7 @@
     max-width: 680px;
     margin-bottom: 30px;
     @media (max-width: 480px) {
-      @include text-md($color: $body-text, $font-weight: 500, $multiplier: 0.88, !important);
+      @include text-md($color: $body-text, $font-weight: 500, $font-multiplier: 0.88, $content: !important);
     }
     word-break: break-word;
     word-wrap: break-word;
