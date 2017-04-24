@@ -131,10 +131,10 @@
             {% for blog in menuItems %}
                 <li class="side-navigation__item">
                     <a href="{{ blog.link | raw }}" class="side-navigation__link">
-                        {% if menuItem.pageTitle == "" %}
-                            {{menuItem.blogTitle | split(' ')[0]}} {{menuItem.blogTitle | split(' ')[1]}}
+                        {% if blog.pageTitle == "" %}
+                            {{blog.blogTitle | split(' ')[0]}} {{blog.blogTitle | split(' ')[1]}}
                         {% else %}
-                            {{menuItem.pageTitle}}
+                            {{blog.pageTitle}}
                         {% endif %}
                     </a>
                 </li>

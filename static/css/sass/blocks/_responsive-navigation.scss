@@ -19,6 +19,7 @@
     height: 80px;
     padding: 0px 30px;
     width: 100%;
+    @include placeholder($color: $body-text)
   }
 
   &__list {
